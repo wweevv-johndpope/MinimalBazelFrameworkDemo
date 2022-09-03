@@ -1,0 +1,16 @@
+PODS:
+  - AnyCodable (1.2.0)
+
+DEPENDENCIES:
+  - AnyCodable
+
+SPEC REPOS:
+  trunk:
+    - AnyCodable
+
+SPEC CHECKSUMS:
+  AnyCodable: bb05e19c676899e0fd511652f2d83bfa044e2503
+
+PODFILE CHECKSUM: 9fd8649845cf57960dc53379c90ffcd1ec41666e
+
+COCOAPODS: 1.11.3

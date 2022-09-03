@@ -1,0 +1,7 @@
+new_pod_repository(
+  name = "AnyCodable",
+  podspec_url = "/Users/johndpope/Documents/gitWorkspace/MinimalBazelFrameworkDemo/test.json",
+  url = "https://github.com/Flight-School/AnyCodable/archive/refs/tags/0.6.5.zip",
+  is_dynamic_framework = True,  # AmazonIVSPlayer is dynamic XCFramework
+  is_xcframework = True
+)

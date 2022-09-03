@@ -1,0 +1,6 @@
+module Pods_MinimalBazelFrameworkDemo {
+  umbrella header "Pods-MinimalBazelFrameworkDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

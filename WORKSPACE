@@ -1,11 +1,9 @@
-workspace(name = "MinimalBazelFrameworkDemo")
-
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
+# rules_apple
 http_archive(
     name = "build_bazel_rules_apple",
-    sha256 = "a5f00fd89eff67291f6cd3efdc8fad30f4727e6ebb90718f3f05bbf3c3dd5ed7",
-    url = "https://github.com/bazelbuild/rules_apple/releases/download/0.33.0/rules_apple.0.33.0.tar.gz",
+    # sha256 = "",
+    url = "https://github.com/bazelbuild/rules_apple/releases/download/1.0.1/rules_apple.1.0.1.tar.gz",
 )
 
 load(
@@ -15,15 +13,11 @@ load(
 
 apple_rules_dependencies()
 
-http_archive(
-    name = "build_bazel_rules_swift",
-    sha256 = "3e52a508cdc47a7adbad36a3d2b712e282cc39cc211b0d63efcaf608961eb36b",
-    url = "https://github.com/bazelbuild/rules_swift/releases/download/0.26.0/rules_swift.0.26.0.tar.gz",
-)
 load(
     "@build_bazel_rules_swift//swift:repositories.bzl",
     "swift_rules_dependencies",
 )
+
 swift_rules_dependencies()
 
 load(
@@ -32,3 +26,34 @@ load(
 )
 
 swift_rules_extra_dependencies()
+
+load(
+    "@build_bazel_apple_support//lib:repositories.bzl",
+    "apple_support_dependencies",
+)
+
+apple_support_dependencies()
+
+# rules_pods
+http_archive(
+    name = "rules_pods",
+    urls = ["https://github.com/pinterest/PodToBUILD/releases/download/4.1.0-412495/PodToBUILD.zip"],
+    # sha256 = "",
+)
+
+load("@rules_pods//BazelExtensions:workspace.bzl", "new_pod_repository")
+
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+git_repository(
+    name = "Plist",
+    commit = "259ca0a5d77833728c18fa6365285559ce8cc0bf",
+    remote = "https://github.com/imWildCat/MinimalBazelFrameworkDemo",
+)
+
+http_archive(
+    name = "rules_pods",
+    urls = ["https://github.com/pinterest/PodToBUILD/releases/download/4.1.0-412495/PodToBUILD.zip"],
+)
+# Load the new_pod_repository macro - needed for `WORKSPACE` usage
+load("@rules_pods//BazelExtensions:workspace.bzl", "new_pod_repository")
+
